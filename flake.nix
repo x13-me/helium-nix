@@ -10,7 +10,7 @@
   outputs =
     { nixpkgs, ... }:
     let
-      version = "0.9.4.1";
+      version = "0.9.3.1";
 
       releases = {
         aarch64-linux = "sha256-BvU0bHtJMd6e09HY+9Vhycr3J0O2hunRJCHXpzKF8lk=";
