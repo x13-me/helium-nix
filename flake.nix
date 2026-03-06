@@ -21,7 +21,12 @@
       packages = builtins.mapAttrs (
         system: hash:
         let
-          arch = builtins.replaceStrings [ "-linux" ] [ "" ] system;
+          arch =
+            {
+              "x86_64-linux" = "x86_64";
+              "aarch64-linux" = "arm64";
+            }
+            .${system};
           pkgs = nixpkgs.legacyPackages.${system};
           pkg = pkgs.appimageTools.wrapType2 rec {
             pname = "helium";

@@ -69,7 +69,7 @@ main() {
         exit 0
     fi
 
-    download_url_aarch64="https://github.com/imputnet/helium-linux/releases/download/${remote_version}/helium-${remote_version}-aarch64.AppImage"
+    download_url_aarch64="https://github.com/imputnet/helium-linux/releases/download/${remote_version}/helium-${remote_version}-arm64.AppImage"
     download_url_x86_64="https://github.com/imputnet/helium-linux/releases/download/${remote_version}/helium-${remote_version}-x86_64.AppImage"
 
 
