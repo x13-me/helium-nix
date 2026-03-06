@@ -10,11 +10,11 @@
   outputs =
     { nixpkgs, ... }:
     let
-      version = "0.9.3.1";
+      version = "0.9.4.1";
 
       releases = {
-        aarch64-linux = "sha256-UfYTPdgE4kUIkritmkjGnSQofElmn24nvwZDA8uHdLk=";
-        x86_64-linux = "sha256-wUmFmfZPWSvPzArbegegQpY1CFu/XAguqPQpINDE2qY=";
+        aarch64-linux = "sha256-BvU0bHtJMd6e09HY+9Vhycr3J0O2hunRJCHXpzKF8lk=";
+        x86_64-linux = "sha256-N5gdWuxOrIudJx/4nYo4/SKSxakpTFvL4zzByv6Cnug=";
       };
     in
     {
