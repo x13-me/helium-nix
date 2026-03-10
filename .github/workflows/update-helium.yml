@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          ref: rolling
 
       - name: Check if update is needed
         id: check
@@ -77,6 +79,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          ref: rolling
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31

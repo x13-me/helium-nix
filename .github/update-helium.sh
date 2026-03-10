@@ -43,10 +43,10 @@ get_latest_release() {
     echo "GETTING LATEST RELEASE" 1>&2
     if [ -n "$GH_TOKEN" ]; then
         echo "ATTEMPTING WITH TOKEN" 1>&2
-        with_retry curl -s -H "Authorization: Bearer ${GH_TOKEN}" "${api_base}/releases/latest"
+        with_retry curl -s -H "Authorization: Bearer ${GH_TOKEN}" "${api_base}/releases"
     else
         echo "GH_TOKEN NOT SET!!!!!!!" 1>&2
-        with_retry curl -s "${api_base}/releases/latest"
+        with_retry curl -s "${api_base}/releases"
     fi
 }
 
