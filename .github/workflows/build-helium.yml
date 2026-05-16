@@ -37,3 +37,9 @@ jobs:
 
       - name: Build
         run: nix build ".#${{ matrix.package }}"
+      - uses: "DeterminateSystems/flakehub-push@main"
+        with:
+          name: "x13-me/helium-nix"
+          rolling: true
+          visibility: "public"
+          include-output-paths: true
