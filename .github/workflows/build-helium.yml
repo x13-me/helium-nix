@@ -26,20 +26,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-        with:
-          nix_path: nixpkgs=channel:nixpkgs-unstable
+      - name: Install Determinate Nix
+        uses: DeterminateSystems/determinate-nix-action@main
 
       - name: Setup Nix Magic Cache
         uses: DeterminateSystems/flakehub-cache-action@main
 
       - name: Build
         run: nix build ".#${{ matrix.package }}"
-      - uses: "DeterminateSystems/flakehub-push@main"
-        with:
-          name: "x13-me/helium-nix"
-          rolling: true
-          visibility: "public"
-          include-output-paths: true
