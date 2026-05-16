@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: write
+      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -27,11 +28,9 @@ jobs:
         run: |
           .github/update-helium.sh --ci --only-check
 
-      - name: Install Nix
+      - name: Setup Determinate Nix
         if: steps.check.outputs.should_update == 'true'
-        uses: cachix/install-nix-action@v31
-        with:
-          nix_path: nixpkgs=channel:nixpkgs-unstable
+        uses: DeterminateSystems/determinate-nix-action@main
 
       - name: Setup Nix Magic Cache
         if: steps.check.outputs.should_update == 'true'
@@ -82,10 +81,8 @@ jobs:
         with:
           ref: 'main'
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-        with:
-          nix_path: nixpkgs=channel:nixpkgs-unstable
+      - name: Setup Determinate Nix
+        uses: DeterminateSystems/determinate-nix-action@main
 
       - name: Setup Nix Magic Cache
         uses: DeterminateSystems/flakehub-cache-action@main
