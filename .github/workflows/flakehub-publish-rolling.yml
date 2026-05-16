@@ -1,8 +1,9 @@
-name: "Publish every Git push to main to FlakeHub"
+name: "Publish every Git pushto FlakeHub"
 on:
   push:
     branches:
       - "main"
+      - "rolling"
 jobs:
   flakehub-publish:
     runs-on: "ubuntu-latest"
