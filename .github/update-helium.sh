@@ -157,6 +157,7 @@ main() {
         commit_message="chore(update): helium to $remote_version"
         echo "commit_message=$commit_message" >> "$GITHUB_OUTPUT"
         echo "should_update=true" >> "$GITHUB_OUTPUT"
+        echo "version=$remote_version" >> "$GITHUB_OUTPUT"
     fi
 }
 
