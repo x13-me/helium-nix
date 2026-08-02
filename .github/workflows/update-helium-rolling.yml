@@ -38,6 +38,7 @@ jobs:
         uses: DeterminateSystems/flakehub-cache-action@main
 
       - name: Setup cachix
+        if: steps.check.outputs.should_update == 'true'
         uses: cachix/cachix-action@v17
         with:
           name: x13
