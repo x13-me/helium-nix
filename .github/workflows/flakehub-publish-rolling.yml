@@ -17,7 +17,7 @@ jobs:
       - uses: "DeterminateSystems/determinate-nix-action@v3"
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
-          name: "x13-me/helium-nix"
+          name: "x/helium-nix"
           rolling: true
           visibility: "public"
           include-output-paths: true
