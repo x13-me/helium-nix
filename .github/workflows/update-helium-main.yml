@@ -19,7 +19,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
-          ref: 'main'
+          ref: "main"
 
       - name: Check if update is needed
         id: check
@@ -35,6 +35,12 @@ jobs:
       - name: Setup Nix Magic Cache
         if: steps.check.outputs.should_update == 'true'
         uses: DeterminateSystems/flakehub-cache-action@main
+
+      - name: Setup cachix
+        uses: cachix/cachix-action@v14
+        with:
+          name: x13
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Update version
         id: update
@@ -88,7 +94,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
-          ref: 'main'
+          ref: "main"
 
       - name: Setup Determinate Nix
         uses: DeterminateSystems/determinate-nix-action@main

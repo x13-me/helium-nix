@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
-          ref: 'rolling'
+          ref: "rolling"
 
       - name: Check if update is needed
         id: check
@@ -36,6 +36,12 @@ jobs:
       - name: Setup Nix Magic Cache
         if: steps.check.outputs.should_update == 'true'
         uses: DeterminateSystems/flakehub-cache-action@main
+
+      - name: Setup cachix
+        uses: cachix/cachix-action@v14
+        with:
+          name: x13
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Update version
         id: update
@@ -80,7 +86,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
-          ref: 'rolling'
+          ref: "rolling"
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
