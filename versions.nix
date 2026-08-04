@@ -1,5 +1,5 @@
 {
-  version = "0.1.1.1";
+  version = "0.15.1.1";
   systems = {
     aarch64-linux = {
       appimage = "sha256-cEIRnMMCo7B+e/jhCMqfziTGQ0CYKaOIsV1A6I7F7GY=";
