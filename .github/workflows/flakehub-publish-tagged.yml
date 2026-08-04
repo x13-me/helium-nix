@@ -24,6 +24,6 @@ jobs:
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
           visibility: "public"
-          name: "x/helium-nix"
+          name: "x13-me/helium-nix"
           tag: "${{ inputs.tag }}"
           include-output-paths: true
