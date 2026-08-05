@@ -114,13 +114,13 @@ main() {
         exit 1
     fi
     
-    flake_version=$(echo "$remote_version" | sed 's/\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.\([0-9][0-9]*\)$/\1-\2/')
+    semantic_version=$(echo "$remote_version" | sed 's/\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.\([0-9][0-9]*\)$/\1-\2/')
     
     local_version=$(get_current_version)
     
-    echo "Checking version... local=$local_version remote=$remote_version (flake=$flake_version)"
+    echo "Checking version... local=$local_version remote=$remote_version (semver=$semantic_version)"
     
-    if [ "$local_version" = "$flake_version" ]; then
+    if [ "$local_version" = "$remote_version" ]; then
         echo "Local Helium version is up to date"
         if $only_check && $ci; then
             echo "should_update=false" >> "$GITHUB_OUTPUT"
@@ -128,7 +128,7 @@ main() {
         exit 0
     fi
     
-    echo "Local Helium version is outdated, updating from $local_version to $flake_version"
+    echo "Local Helium version is outdated, updating from $local_version to $semantic_version"
     
     if $only_check; then
         echo "should_update=true" >> "$GITHUB_OUTPUT"
@@ -145,16 +145,16 @@ main() {
     
     echo "Updating versions.nix..."
     write_versions_nix \
-    "$flake_version" \
+    "$remote_version" \
     "$new_aarch64_appimage" \
     "$new_aarch64_tarball" \
     "$new_x86_64_appimage" \
     "$new_x86_64_tarball"
     
-    echo "Updated Helium from $local_version to $flake_version"
+    echo "Updated Helium from $local_version to $semantic_version"
     
     if $ci; then
-        flake_output=$(update_flake)
+        update_output=$(update_flake)
     else
         update_flake
     fi
@@ -164,14 +164,14 @@ main() {
         
         {
             echo "commit_message<<${delimiter}"
-            echo "chore(update): helium to ${flake_version}"
-            if [ -n "$flake_output" ]; then
+            echo "chore(update): helium to ${semantic_version}"
+            if [ -n "$update_output" ]; then
                 echo ""
-                echo "$flake_output"
+                echo "$update_output"
             fi
             echo "${delimiter}"
             echo "should_update=true"
-            echo "version=${flake_version}"
+            echo "version=${semantic_version}"
         } >> "$GITHUB_OUTPUT"
     fi
 }
