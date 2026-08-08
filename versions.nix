@@ -1,13 +1,13 @@
 {
-  version = "0.15.2.1";
+  version = "0.15.3.1";
   systems = {
     aarch64-linux = {
-      appimage = "sha256-73KXJ2H8FGNt5VTg/9cdkbRfRVgafxwRRe4DQlbM408=";
-      tarball  = "sha256-BFeNl1h73ycKoNEg0NGIbxMf8je2NKjOQoqj9dTXJgA=";
+      appimage = "sha256-3Ut6Mr5Spj9mPUuXgtRf2WVqlMzkOAWEyZXdXQiwb4k=";
+      tarball  = "sha256-/7S176593jli0rSExhATwNx3ZcVkrwuQlZ0dU7tMPjU=";
     };
     x86_64-linux = {
-      appimage = "sha256-Sn3MWsvqZw5YUYVKrEkJLW1gFQ1Sr+whEsCiFxYNvgg=";
-      tarball  = "sha256-+Bw3Ty77cLQA8nBhx1gjyXFUjBbn4RMTU/D9Fc9DaKw=";
+      appimage = "sha256-ZCCm/prkgYgbDHW6OBPWvoIE77g7IYQpYdqc/PnIrSU=";
+      tarball  = "sha256-IEYWTZ48ioufDCdzXgGy/TZw3dHh45mqZuPW0j3DoYY=";
     };
   };
 }
